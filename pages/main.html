@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html style="background-color: rgb(43, 43, 43);">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/bulma.min.css" />
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/darktheme.css" />
+</head>
+<style>
+    body {
+        margin: 0;
+        background-color: rgb(43, 43, 43);
+    }
+</style>
+
+<body class="has-background-grey">
+    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand is-dark">
+            <a class="navbar-item is-rounded is-small" id="closeButton" onmouseover="document.getElementById('closeButton').style.backgroundColor = rgb(43, 43, 43);">X</a>
+        </div>
+    </nav>
+    <center>
+        <img src="../0t0SeGK.jpg" id="wumpus" style="image-rendering: high-quality;">
+        <p id="point">0</p>
+    </center>
+</body>
+<script>
+    var ipc = require('electron').ipcRenderer;
+    document.getElementById('closeButton').addEventListener('click', clck => {
+        ipc.once('actionReply', function (event, response) {
+            processResponse(response);
+        })
+        ipc.send('invokeAction', 'closeApp');
+    })
+    document.getElementById('wumpus').addEventListener('click', wumpusClicked => {
+        ipc.once('actionReply', function(event, response){
+            processResponse(response)
+        })
+        ipc.send("invokeAction", "givePoint")
+    })
+</script>
+
+</html>

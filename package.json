@@ -1,0 +1,30 @@
+{
+  "name": "project-1",
+  "version": "1.0.0",
+  "description": "My Project",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "css-build": "node-sass --omit-source-map-url sass/mystyles.scss css/mystyles.css",
+    "css-watch": "npm run css-build -- --watch",
+    "test": "npm run css-watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Timothy3773/project1.git"
+  },
+  "author": "Jonathan Scott",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Timothy3773/project1/issues"
+  },
+  "homepage": "https://github.com/Timothy3773/project1#readme",
+  "dependencies": {
+    "bulma": "^0.7.2",
+    "electron": "^3.0.10",
+    "pc": "0.0.6"
+  },
+  "devDependencies": {
+    "electron": "^3.0.7"
+  }
+}
